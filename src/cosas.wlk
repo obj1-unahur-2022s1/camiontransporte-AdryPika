@@ -21,7 +21,7 @@ object bumblebee {
 
 object paqueteLadrillos{
 	const property pesoDeLadrillo = 2
-	var property cantidadDeLadrillos = 0
+	var property cantidadDeLadrillos 
 	
 	method peso() = pesoDeLadrillo * cantidadDeLadrillos
 	
@@ -56,7 +56,7 @@ object contenedor {
 	method nivelDePeligrosidad(){
 		 if (cosasAdentro.isEmpty()){
 		 	return 0
-		 }else { return cosasAdentro.max( { c => c.nivelDePeliogrosidad() } ).nivelDePeligrosidad() }
+		 }else { return cosasAdentro.max( { c => c.nivelDePeligrosidad() } ).nivelDePeligrosidad() }
 	}
 }
 

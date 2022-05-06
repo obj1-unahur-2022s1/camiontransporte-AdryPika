@@ -1,2 +1,12 @@
 import camion.*
 import cosas.*
+
+describe "Test de cosas"{
+	
+	test "Paquete de ladrillos"{
+		
+	}
+	test "Bateria antiaerea"{
+		
+	}
+}
