@@ -33,7 +33,7 @@ object camion {
 	}
 	
 	method objetosMasPeligrososQue(cosa){
-		return cosas.nivelDePeligrosidad() > cosa.nivelDePeligrosidad()
+		return self.objetosQueSuperanPeligrosidad(cosa.nivelDePeligrosidad())
 	}
 	
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad){
@@ -42,5 +42,16 @@ object camion {
 	}
 	
 	
+	method tieneAlgoQuePesaEntre(min, max){
+		return cosas.any( { c => c.peso().between(min, max) } )
+	}
+	
+	method cosaMasPesada() {
+		return cosas.max( { c => c.peso() } )
+	}
+	
+	method pesos(){
+		return cosas.map( { c => c.peso() } )
+	}
 
 }
