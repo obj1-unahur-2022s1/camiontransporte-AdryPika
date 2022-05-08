@@ -20,8 +20,8 @@ object bumblebee {
 }
 
 object paqueteLadrillos{
-	const property pesoDeLadrillo = 2
-	var property cantidadDeLadrillos 
+	const  pesoDeLadrillo = 2
+	var property cantidadDeLadrillos = 0
 	
 	method peso() = pesoDeLadrillo * cantidadDeLadrillos
 	
@@ -36,14 +36,14 @@ object arena {
 	method nivelDePeligrosidad() = 1
 }
 
-object bateriaAntiarea {
+object bateriaAntiaerea {
 	var property tieneMisil = true 
 	
 	method peso(){
-		if (tieneMisil){ return 300} else {return 200}
+		return if (tieneMisil){  300} else { 200}
 	}
 	method nivelDePeligrosidad(){
-		if(tieneMisil){return 100}else {return 0}
+		return if(tieneMisil){ 100}else { 0}
 	}
 }
 
@@ -54,10 +54,11 @@ object contenedor {
 		return 100 + cosasAdentro.sum( { c => c.peso() } )
 	}
 	method nivelDePeligrosidad(){
-		 if (cosasAdentro.isEmpty()){
-		 	return 0
-		 }else { return cosasAdentro.max( { c => c.nivelDePeligrosidad() } ).nivelDePeligrosidad() }
+		return  if (cosasAdentro.isEmpty()){
+		 	 0
+		 }else {  cosasAdentro.max( { c => c.nivelDePeligrosidad() } ).nivelDePeligrosidad() }
 	}
+	
 }
 
 
@@ -68,13 +69,19 @@ object residuosRadioactivos {
 }
 
 object embalajeSeguridad {
-	var property cosaAdentro 
+	var  property  cosaAdentro  = algunObjeto
 	
 	method peso() = cosaAdentro.peso()
 	
 	method nivelDePeligrosidad() = cosaAdentro.nivelDePeligrosidad() * 0.5
-
+		
 }
+
+object  algunObjeto{
+	var property peso = 0
+	var property nivelDePeligrosidad = 0
+}
+
 
 
 

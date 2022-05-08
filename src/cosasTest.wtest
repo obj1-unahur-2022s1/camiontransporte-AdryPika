@@ -2,11 +2,28 @@ import camion.*
 import cosas.*
 
 describe "Test de cosas"{
+	var cantidadLadrillos = 15
+	var tieneMisil = true
+	var pesoResiduos = 30
 	
 	test "Paquete de ladrillos"{
 		
+		assert.equals( 30, cantidadLadrillos * 2 )
 	}
+	
 	test "Bateria antiaerea"{
-		
+		assert.equals(300, bateriaAntiaerea.peso())
+	}
+	
+	test "Contenedor portuario"{
+		assert.equals(100 + paqueteLadrillos.peso() + embalajeSeguridad.peso(),
+					contenedor.peso()
+		)
+	}
+	
+	test "embalaje de seguridad"{
+		residuosRadioactivos.peso(pesoResiduos)
+		embalajeSeguridad.cosaAdentro(residuosRadioactivos)
+		assert.equals(pesoResiduos, embalajeSeguridad.peso())
 	}
 }
