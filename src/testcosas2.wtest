@@ -1,0 +1,9 @@
+import camion2.*
+import cosas2.*
+
+describe "ALgunos test adicionales"{
+	
+	test ""
+}
+	assert.that(true)
+
