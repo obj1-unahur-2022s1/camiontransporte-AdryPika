@@ -3,7 +3,29 @@ import cosas2.*
 
 describe "ALgunos test adicionales"{
 	
-	test ""
+
+	test "un poco mas complicado"{
+		var cantidadLadrillos = 90
+		var pesoArena = 60
+		var pesoResiduos = 20
+		var tieneMisiles = true
+		
+		paqueteLadrillos.cantidadDeLadrillos(cantidadLadrillos)
+		arena.peso(pesoArena)
+		residuosRadioactivos.peso(pesoResiduos)
+		bateriaAntiaerea.tieneMisil(tieneMisiles)
+		contenedor.cargar(bateriaAntiaerea)
+		camion.cargar(arena)
+		camion.cargar(paqueteLadrillos)
+		camion.cargar(contenedor)
+		
+	assert.equals(1684, (camion.pesoTotal()) ) 
+	assert.notThat(camion.excedidoDePeso())
+	assert.equals( contenedor, camion.cosaMasPesada() )
+	assert.notThat( camion.hayAlgunoQuePesa(90))	
+	
+		
+	}
 }
-	assert.that(true)
+	
 
