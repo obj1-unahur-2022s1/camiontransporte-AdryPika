@@ -13,7 +13,7 @@ object bumblebee {
 	method nivelDePeligrosidad(){
 		if (transformadoEnAuto){ return 15} else {return 30}
 	}
-	method trasformar(){
+	method transformar(){
 		transformadoEnAuto = not transformadoEnAuto
 	}
 	

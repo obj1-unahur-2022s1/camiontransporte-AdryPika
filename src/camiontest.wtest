@@ -1,3 +1,34 @@
 import camion.*
 import cosas.*
 
+describe "Test del camion"{
+	var pesoArena = 150
+	var tieneMisiles = true
+	var cantidadLadrillos = 80
+	
+	test "Bumblebee como robot"{
+		bumblebee.transformar()
+		camion.cargar(bumblebee)
+		assert.equals(30, bumblebee.nivelDePeligrosidad())
+		assert.that(bumblebee.peso()==800)
+	}
+	
+	test "Arena a granel"{
+		arena.peso(pesoArena)
+		camion.cargar(arena)
+		assert.equals(150, arena.peso())
+	}
+	
+	test " Batería antiaérea con los misiles puestos"{
+		bateriaAntiaerea.tieneMisil(tieneMisiles)
+		camion.cargar(bateriaAntiaerea)
+		assert.equals(300, bateriaAntiaerea.peso())
+	}
+	test " Embalaje de seguridad con 80 ladrillos"{
+		paqueteLadrillos.cantidadDeLadrillos(cantidadLadrillos)
+		embalajeSeguridad.cosaAdentro(paqueteLadrillos)
+		camion.cargar(embalajeSeguridad)
+		assert.equals(160,embalajeSeguridad.peso() )
+	}
+	
+}
