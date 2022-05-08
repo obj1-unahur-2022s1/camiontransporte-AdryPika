@@ -69,7 +69,7 @@ object residuosRadioactivos {
 }
 
 object embalajeSeguridad {
-	var  property  cosaAdentro  = algunObjeto
+	var  property  cosaAdentro  = algunObjeto 
 	
 	method peso() = cosaAdentro.peso()
 	
