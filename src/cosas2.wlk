@@ -1,7 +1,10 @@
-import camion.*
+/*
+ * cosas2: Bien! Solo había un detalle sobre un método de bumblee, el resto solo sugerencias 
+ */
+import camion.* // No es necesario importar los objetos del archivo camion
 
 object knightRider {
-	
+	/* Bien! */
 	method peso() = 500
 	
 	method nivelPeligrosidad() = 10
@@ -12,6 +15,11 @@ object knightRider {
 }
 
 object bumblebee {
+	/* Bien(-). El método consecuencia() debería setear en false el valor de la variable
+	 * transformadoEnAuto. De la forma que está hecho, si bumblebee estuviese ya como robot
+	 * al cargarlo en el cambión se transformaría en auto y eso no sería correcto. Te dejo
+	 * escrita la corrección.
+	 */
 	var transformadoEnAuto = true
 	
 	method peso() = 800
@@ -25,11 +33,15 @@ object bumblebee {
 	
 	method totalBultos() = 2
 	
-	method consecuencia() { self.transformar() }
+	method consecuencia() { transformadoEnAuto = false }
 	
 }
 
 object paqueteLadrillos{
+	/* Bien. Es buena idea usar una constante para pesoDeLadrillo, si se usara en varios
+	 * métodos a lo largo del código, pero en este caso como solo se utiliza para el cálculo
+	 * del peso no haría falta, de cualquier forma es correcta la solución.
+	 */
 	const  pesoDeLadrillo = 2
 	var property cantidadDeLadrillos = 0
 	
@@ -49,6 +61,7 @@ object paqueteLadrillos{
 
 
 object arena {
+	/* Bien! */
 	var property peso = 0
 	
 	method nivelDePeligrosidad() = 1
@@ -59,31 +72,37 @@ object arena {
 }
 
 object bateriaAntiaerea {
+	/* Bien(-). Acá también te dejo las formas resumidas sin usar return. El método consecuencia()
+	 * no está correcto, ya que retorna el valor de la variable tieneMisil, y lo que pedía el
+	 * enunciado es que al cargar la bateria en el camión, lo hiciera con los misiles. Te dejo
+	 * la corrección del código.
+	 */
 	var property tieneMisil = true 
 	
-	method peso(){
-		return if (tieneMisil){  300} else { 200}
-	}
-	method nivelDePeligrosidad(){
-		return if(tieneMisil){ 100}else { 0}
-	}
+	method peso() = if(tieneMisil) 300 else 200
 	
-	method totalBultos() {
-		return if (tieneMisil){ 2 } else { 1 }
-	}
+	method nivelDePeligrosidad() = if(tieneMisil) 100 else 0
 	
-	method consecuencia() { return tieneMisil  }
+	method totalBultos() = if(tieneMisil) {2} else {1}
+	
+	method consecuencia() { self.tieneMisil(true) /* usando el setter */ } // o también: { tieneMisil = true }
 }
 
 object contenedor {
+	/* Bien. Te dejé unas sugerencias */
 	var property cosasAdentro = []
 	
 	method peso() { return 100 + cosasAdentro.sum( { c => c.peso() } ) }
 		
 	method nivelDePeligrosidad(){
+		/* Bien, pero quedaba mejor si definías un método auxiliar que te retornara
+		 * el objeto contenido más peligroso y luego a ese pedirle el nivelDePeligrosidad()
+		 * Te dejo la sugerencia en el código
+		 */
 		return  if (cosasAdentro.isEmpty()){ 0 }else { 
-			cosasAdentro.max( { c => c.nivelDePeligrosidad() } ).nivelDePeligrosidad()}
+			self.objetoContenidoMasPeligroso().nivelDePeligrosidad()}
 	}
+	method objetoContenidoMasPeligroso() = cosasAdentro.max({c=>c.nivelDePeligrosidad()})
 	
 	method cargar(unaCosa)  { cosasAdentro.add(unaCosa) }
 	
@@ -96,6 +115,7 @@ object contenedor {
 
 
 object residuosRadioactivos {
+	/* Bien! */
 	var property peso = 0
 	
 	method nivelDePeligrosidad() = 200
@@ -106,6 +126,7 @@ object residuosRadioactivos {
 }
 
 object embalajeSeguridad {
+	/* Bien! */
 	var  property  cosaAdentro 
 	
 	method peso() {return  cosaAdentro.peso()}
